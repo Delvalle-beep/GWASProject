@@ -13,18 +13,18 @@ import sys
 import os
 
 def process_paths(input_path,output_path):
-    #Código para processar cada um dos paths
-    print('Processando os paths...')
+    #Code to process each of the paths
+    print('Processing the paths...')
     return input_path, output_path
 
 def process_data(input_path,output_path):
     i = 0
     for input_path in input_path:
         df=pd.read_csv(input_path,sep="\t",nrows=100000)
-        print('Dados do arquivo', input_path)
+        print('File data', input_path)
         print(df.head())
         
-        #carregando o arquivo no gwaslab
+        #loading the file in gwaslab
         mysumstats = gl.Sumstats(
              input_path,
              fmt="plink",
@@ -71,17 +71,17 @@ def process_data(input_path,output_path):
         i +=1
     
     
-#criando o parser
+#creating the parser
 parser = argparse.ArgumentParser(description='Process multiple input paths')
 
-#Adicionando o argumento de path de entrada
+#Adding the input path argument
 parser.add_argument('--input_path', type=str, nargs='+', help='input path')
 parser.add_argument('--output_path', type=str, help='output path')
 
-#fazendo o parse do argumento
+#parsing the argument
 args = parser.parse_args()
 
-#usando os argumentos 
+#using the arguments
 input_path, output_path = process_paths(args.input_path, args.output_path)
 process_paths(args.input_path,args.output_path)
                     
