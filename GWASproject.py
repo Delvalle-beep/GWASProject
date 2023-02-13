@@ -83,7 +83,7 @@ args = parser.parse_args()
 
 #using the arguments
 input_path, output_path = process_paths(args.input_path, args.output_path)
-process_paths(args.input_path,args.output_path)
+process_data(args.input_path,args.output_path)
                     
 
 
