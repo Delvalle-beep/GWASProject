@@ -15,3 +15,100 @@ Example:
 ```
 python GWASproject.py --input_path 'your/input/path/', 'your/input/path2/' ,'your/input/path3/' --output_path 'your/output/path'
 ```
+
+The script is an optimization of the <a href="https://cloufield.github.io/gwaslab/">GWASLAB"</a> library.
+To obtain more personalized results in the generated visualizations, some variables can be set.
+
+#Manhattan and QQ Plot (plot_mqq)
+
+For the QQ and Manhattan plots the default values ​​are the following:
+```
+mysumstats.plot_mqq(
+          anno=True,
+          cut=0,
+          skip=0,
+          sig_level=5e-8,
+          highlight = [],
+          highlight_color="#CB132D",
+          pinpoint=[],
+          pinpoint_color ="red",
+          marker_size=(5,25),
+          build="19",
+          region_mqq=None,
+          saveargs={"dpi":400,"facecolor":"white"}
+          ):
+```
+<ul>
+<li><b>Skip:</b> sometimes it is not necessary to plot all variants, we can skip the insignicant variants . For example, we can exclude varints with -log10p lower than 3 from the plot by specifying skip=3</li>
+Use this command to set:
+</br>
+```
+--skip
+```
+</br>
+<li><b>Cut:</b>loci with extremly large -log10(P) value are very likely to dwarf other significant loci , so we want to scale down the extrame loci from a certain threshold.</li>
+Use this command to set:
+</br>
+```
+--cut
+```
+</br>
+<li><b>Sig_level:</b>genome-wide significance threshold. Specify the P value threshold.</li>
+</br>
+Use this command to set:
+```
+--sig_level
+```
+</br>
+<li><b>Anno:</b>When it is set "True", the variants to annotate will be selected automatically using a sliding window with windowsize=500kb.</li>
+</br>
+Use this command to set:
+```
+--anno
+```
+</br>
+<li><b>Highlight:</b>A "type=list" element to specify the variants of loci for highlighting.</li>
+</br>
+Use this command to set:
+```
+--highlight
+```
+</br>
+<li><b>Highlight_color:</b>specify the color ussed for highlighting, RGB format.</li>
+</br>
+Use this command to set:
+```
+--highlight_color
+```
+</br>
+<li><b>Pinpoint:</b>a list of SNPIDs.</li>
+</br>
+Use this command to set:
+```
+--pinpoint
+```
+</br>
+<li><b>Pinpoint_color:</b>color for pinpoint.</li>
+</br>
+Use this command to set:
+```
+--pinpoint_color
+```
+</br>
+<li><b>Build:</b>genome build version "19" or "38".</li>
+</br>
+<li><b>Region_mqq:</b>A "type=tuple" element to define wich region to plot. Example: region=(7,156538803,157538803)</li>
+</br>
+Use this command to set:
+```
+--region_mqq
+```
+</br>
+<li><b>marker_sizer:</b>It define the marker size,is defined by two integers, an example of use is:marker_size=(5,10)</li>
+</br>
+Use this command to set:
+```
+--marker_size
+```
+</br>
+</ul>
