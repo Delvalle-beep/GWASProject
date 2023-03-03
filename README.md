@@ -1,14 +1,24 @@
-# GWASproject
-
-  ██████  ██     ██  █████  ███████     ██████  ██████   ██████       ██ ███████  ██████ ████████ 
-  ██       ██     ██ ██   ██ ██          ██   ██ ██   ██ ██    ██      ██ ██      ██         ██    
-  ██   ███ ██  █  ██ ███████ ███████     ██████  ██████  ██    ██      ██ █████   ██         ██    
-  ██    ██ ██ ███ ██ ██   ██      ██     ██      ██   ██ ██    ██ ██   ██ ██      ██         ██    
-   ██████   ███ ███  ██   ██ ███████     ██      ██   ██  ██████   █████  ███████  ██████    ██   
+ ____    __      __  ______  ____       
+/\  _`\ /\ \  __/\ \/\  _  \/\  _`\     
+\ \ \L\_\ \ \/\ \ \ \ \ \L\ \ \,\L\_\   
+ \ \ \L_L\ \ \ \ \ \ \ \  __ \/_\__ \   
+  \ \ \/, \ \ \_/ \_\ \ \ \/\ \/\ \L\ \ 
+   \ \____/\ `\___x___/\ \_\ \_\ `\____\
+    \/___/  '\/__//__/  \/_/\/_/\/_____/
+                                        
+                                        
+ ____    ____    _____    _____  ____    ____    ______   
+/\  _`\ /\  _`\ /\  __`\ /\___ \/\  _`\ /\  _`\ /\__  _\  
+\ \ \L\ \ \ \L\ \ \ \/\ \\/__/\ \ \ \L\_\ \ \/\_\/_/\ \/  
+ \ \ ,__/\ \ ,  /\ \ \ \ \  _\ \ \ \  _\L\ \ \/_/_ \ \ \  
+  \ \ \/  \ \ \\ \\ \ \_\ \/\ \_\ \ \ \L\ \ \ \L\ \ \ \ \ 
+   \ \_\   \ \_\ \_\ \_____\ \____/\ \____/\ \____/  \ \_\
+    \/_/    \/_/\/ /\/_____/\/___/  \/___/  \/___/    \/_/ 
 
 GWAS Project is a script that allows you to generate visualizations from summary statistics of a genome-wide study in a fully customized and automated way.
 The purpose of its construction is to automate the researcher's time to carry out analyzes of a broad genome study, since it is a very complete and easy-to-use tool.
-## Quick Start
+
+#Quick Start
 
 The mandatory arguments to run the program are "input_path" and "output_path"
 
@@ -27,6 +37,7 @@ The script is an optimization of the <a href="https://cloufield.github.io/gwasla
 To get more personalized results some variables can be set. Learn more in the #GettingStarted session
 
 #Getting Started
+
 <b>A practical tool for working with GWAS summary statistics</b>
 GWAS Project is a script that allows you to generate visualizations from summary statistics of a genome-wide study in a fully customized and automated way.
 The purpose of its construction is to automate the researcher's time to carry out analyzes of a broad genome study, since it is a very complete and easy-to-use tool.
@@ -53,7 +64,20 @@ It is important to note that GWAS studies require a large sample size of thousan
 Single nucleotide polymorphisms (SNPs) are genetic variants that occur at a determined frequency in a population. This is the main difference between SNPs and simple mutations. SNPs occur at expected and determined frequencies, while mutations occur at unexpected frequencies. Furthermore, it is important to highlight that SNPs occur with a certain regularity in our genome. It is estimated that there is one SNP per thousand nucleotides, considering that our genome has 3 billion nucleotides, the estimate is that there are 3 million SNPs (although this can vary according to the study). More than 100 million SNPs that have some clinical or biological significance have been reported in the literature. It is important to note that many of these SNPs do not affect our organism or biology, as they can occur in regions of our DNA that will not affect gene expression. However, others may affect genes, generate important problems, metabolic disorders, and may be risk factors for diseases.
 
 <h4>Study materials</h4>
-If population genetics or genome-wide association studies are new to you, I recommend visiting this <a href="https://gwaslab.org/gwas-tutorial-gwas%e6%95%99%e7%a8%8b/">website</a> for more in-depth content.
+<img scr="uploads/c2d29e8d675ff08372e80a5780124686/gwastutorialPrint.png" title="Print screen">
+If population genetics or genome-wide association studies are new to you, I recommend visiting this <a href="https://cloufield.github.io/GWASTutorial/">website</a> for more in-depth content.
+
+This tutorial is provided by the Kamaya Laboratory at the University of Tokyo. It is primarily intended for beginners in bioinformatics/statistical genetics. It covers the following parts:
+
+<ul>
+<li>Command line (mostly linux, a small amount of R/Python/JupyterNotebook/Github, etc.)</li>
+<li>Data processing and quality control before GWAS</li>
+<li>GWAS and results visualization</li>
+<li>Downstream analysis after GWAS</li>
+<li>GWAS Related Topics</li>
+</ul>
+
+To delve even further into statistical and computational concepts, I strongly recommend accessing this <a href="https://gwaslab.org/">site</a>.
 
 #Manhattan and QQ Plot (plot_mqq)
 
