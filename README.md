@@ -52,7 +52,7 @@ It is important to note that GWAS studies require a large sample size of thousan
 Single nucleotide polymorphisms (SNPs) are genetic variants that occur at a determined frequency in a population. This is the main difference between SNPs and simple mutations. SNPs occur at expected and determined frequencies, while mutations occur at unexpected frequencies. Furthermore, it is important to highlight that SNPs occur with a certain regularity in our genome. It is estimated that there is one SNP per thousand nucleotides, considering that our genome has 3 billion nucleotides, the estimate is that there are 3 million SNPs (although this can vary according to the study). More than 100 million SNPs that have some clinical or biological significance have been reported in the literature. It is important to note that many of these SNPs do not affect our organism or biology, as they can occur in regions of our DNA that will not affect gene expression. However, others may affect genes, generate important problems, metabolic disorders, and may be risk factors for diseases.
 
 <h4>Study materials</h4>
-![gwastutorialPrint](uploads/c2d29e8d675ff08372e80a5780124686/gwastutorialPrint.png)
+![gwastutorialPrint](../uploads/c2d29e8d675ff08372e80a5780124686/gwastutorialPrint.png)
 If population genetics or genome-wide association studies are new to you, I recommend visiting this <a href="https://cloufield.github.io/GWASTutorial/">website</a> for more in-depth content.
 
 This tutorial is provided by the Kamaya Laboratory at the University of Tokyo. It is primarily intended for beginners in bioinformatics/statistical genetics. It covers the following parts:
