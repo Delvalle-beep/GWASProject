@@ -1,19 +1,7 @@
- ____    __      __  ______  ____       
-/\  _`\ /\ \  __/\ \/\  _  \/\  _`\     
-\ \ \L\_\ \ \/\ \ \ \ \ \L\ \ \,\L\_\   
- \ \ \L_L\ \ \ \ \ \ \ \  __ \/_\__ \   
-  \ \ \/, \ \ \_/ \_\ \ \ \/\ \/\ \L\ \ 
-   \ \____/\ `\___x___/\ \_\ \_\ `\____\
-    \/___/  '\/__//__/  \/_/\/_/\/_____/
-                                        
-                                        
- ____    ____    _____    _____  ____    ____    ______   
-/\  _`\ /\  _`\ /\  __`\ /\___ \/\  _`\ /\  _`\ /\__  _\  
-\ \ \L\ \ \ \L\ \ \ \/\ \\/__/\ \ \ \L\_\ \ \/\_\/_/\ \/  
- \ \ ,__/\ \ ,  /\ \ \ \ \  _\ \ \ \  _\L\ \ \/_/_ \ \ \  
-  \ \ \/  \ \ \\ \\ \ \_\ \/\ \_\ \ \ \L\ \ \ \L\ \ \ \ \ 
-   \ \_\   \ \_\ \_\ \_____\ \____/\ \____/\ \____/  \ \_\
-    \/_/    \/_/\/ /\/_____/\/___/  \/___/  \/___/    \/_/ 
+
++-+-+-+-+ +-+-+-+-+-+-+-+
+|G|W|A|S| |P|R|O|J|E|C|T|
++-+-+-+-+ +-+-+-+-+-+-+-+
 
 GWAS Project is a script that allows you to generate visualizations from summary statistics of a genome-wide study in a fully customized and automated way.
 The purpose of its construction is to automate the researcher's time to carry out analyzes of a broad genome study, since it is a very complete and easy-to-use tool.
