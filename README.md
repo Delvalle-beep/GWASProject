@@ -1,9 +1,16 @@
 # GWASproject
 
+  ██████  ██     ██  █████  ███████     ██████  ██████   ██████       ██ ███████  ██████ ████████ 
+  ██       ██     ██ ██   ██ ██          ██   ██ ██   ██ ██    ██      ██ ██      ██         ██    
+  ██   ███ ██  █  ██ ███████ ███████     ██████  ██████  ██    ██      ██ █████   ██         ██    
+  ██    ██ ██ ███ ██ ██   ██      ██     ██      ██   ██ ██    ██ ██   ██ ██      ██         ██    
+   ██████   ███ ███  ██   ██ ███████     ██      ██   ██  ██████   █████  ███████  ██████    ██   
 
-## Getting started
+GWAS Project is a script that allows you to generate visualizations from summary statistics of a genome-wide study in a fully customized and automated way.
+The purpose of its construction is to automate the researcher's time to carry out analyzes of a broad genome study, since it is a very complete and easy-to-use tool.
+## Quick Start
 
-To run the program you must set two arguments "input_path" and "output_path"
+The mandatory arguments to run the program are "input_path" and "output_path"
 
 Example:
 ```
@@ -17,7 +24,23 @@ python GWASproject.py --input_path 'your/input/path/', 'your/input/path2/' ,'you
 ```
 
 The script is an optimization of the <a href="https://cloufield.github.io/gwaslab/">GWASLAB"</a> library.
-To obtain more personalized results in the generated visualizations, some variables can be set.
+To get more personalized results some variables can be set. Learn more in the #GettingStarted session
+
+#Getting Started
+<b>A practical tool for working with GWAS summary statistics</b>
+GWAS Project is a script that allows you to generate visualizations from summary statistics of a genome-wide study in a fully customized and automated way.
+The purpose of its construction is to automate the researcher's time to carry out analyzes of a broad genome study, since it is a very complete and easy-to-use tool.
+
+The packages required to run GWAS Project are:
+<ul>
+<li>matplotlib==3.6.3 or more updated version</li>
+<li>gwaslab==3.3.18 or more updated version</li>
+<li>pandas==1.4.4 or more updated version</li>
+</ul>
+
+This guide will help you get more unique and personalized views for your study.
+
+--- colocar aqui um guia de estudos para pessoas que não conhecem sobre genética de populações ---
 
 #Manhattan and QQ Plot (plot_mqq)
 
