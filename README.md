@@ -88,6 +88,8 @@ Despite being originally written in Traditional Chinese, the site is well writte
 --------------------------------------------------------------------------------------------------
 <h1>GWAS Project<h1>
 
+
+
 <h2>Manhattan and QQ Plot (plot_mqq)</h2>
 
 For the QQ and Manhattan plots the default values ​​are the following:
