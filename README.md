@@ -80,7 +80,10 @@ This tutorial is provided by the Kamaya Laboratory at the University of Tokyo. I
 </ul>
 
 To delve even further into statistical and computational concepts, I strongly recommend accessing this <a href="https://gwaslab.org/">site</a>.
+
 ![GWASLABorg](../tutorial-images/GWASLABorg.png)
+
+Despite being originally written in Traditional Chinese, the site is well written and easily translated by public translation tools. I consider this the most complete and most explanatory material for beginners in the area.
 
 --------------------------------------------------------------------------------------------------
 <h1>GWAS Project<h1>
