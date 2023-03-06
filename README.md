@@ -1,7 +1,6 @@
 
-+-+-+-+-+ +-+-+-+-+-+-+-+
-|G|W|A|S| |P|R|O|J|E|C|T|
-+-+-+-+-+ +-+-+-+-+-+-+-+
+                                  |G|W|A|S| |P|R|O|J|E|C|T|
+
 
 GWAS Project is a script that allows you to generate visualizations from summary statistics of a genome-wide study in a fully customized and automated way.
 The purpose of its construction is to automate the researcher's time to carry out analyzes of a broad genome study, since it is a very complete and easy-to-use tool.
@@ -9,12 +8,6 @@ The purpose of its construction is to automate the researcher's time to carry ou
 <h2>Quick Start</h2>
 
 The mandatory arguments to run the program are "input_path" and "output_path"
-
-<ul>
-<li>Input files must be in "csv" or "tsv" format</li>
-<li>The script will return three pdf files as output files, these are the summary statistics results</li>
-<li>The plots generated will be Manhattan and regional</li>
-</ul>
 
 Example:
 ```
@@ -26,9 +19,24 @@ Example:
 ```
 python GWASproject.py --input_path 'your/input/path/', 'your/input/path2/' ,'your/input/path3/' --output_path 'your/output/path'
 ```
+The console output should start like this:
+
+![introScreen](../tutorial-images/introScreen.png)
+
+<ul>
+<li>Input files must be in "csv" or "tsv" format</li>
+<li>The script will return three pdf files as output files, these are the summary statistics results</li>
+<li>The plots generated will be Manhattan and regional</li>
+</ul>
+
+In this first case, the results obtained would be:
+
+![ManhattanPlotIntro](../tutorial-images/ManhattanPlotIntro.png)
+![Regional1intro](../tutorial-images/Regional1intro.png)
+![Regional2intro](../tutorial-images/Regional2intro.png)
 
 The script is an optimization of the <a href="https://cloufield.github.io/gwaslab/">"GWASLAB"</a> library.
-To get more personalized results some variables can be set. Learn more in the #GettingStarted session
+To get more personalized results some variables can be set, learn more in the next session.
 
 <h2>Getting Started</h2>
 
