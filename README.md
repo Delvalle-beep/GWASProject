@@ -10,6 +10,12 @@ The purpose of its construction is to automate the researcher's time to carry ou
 
 The mandatory arguments to run the program are "input_path" and "output_path"
 
+<ul>
+<li>Input files must be in "csv" or "tsv" format</li>
+<li>The script will return three pdf files as output files, these are the summary statistics results</li>
+<li>The plots generated will be Manhattan and regional</li>
+</ul>
+
 Example:
 ```
 python GWASproject.py --input_path 'your/input/path/' --output_path 'your/output/path'
@@ -21,7 +27,7 @@ Example:
 python GWASproject.py --input_path 'your/input/path/', 'your/input/path2/' ,'your/input/path3/' --output_path 'your/output/path'
 ```
 
-The script is an optimization of the <a href="https://cloufield.github.io/gwaslab/">GWASLAB"</a> library.
+The script is an optimization of the <a href="https://cloufield.github.io/gwaslab/">"GWASLAB"</a> library.
 To get more personalized results some variables can be set. Learn more in the #GettingStarted session
 
 <h2>Getting Started</h2>
@@ -67,7 +73,10 @@ This tutorial is provided by the Kamaya Laboratory at the University of Tokyo. I
 
 To delve even further into statistical and computational concepts, I strongly recommend accessing this <a href="https://gwaslab.org/">site</a>.
 
-#Manhattan and QQ Plot (plot_mqq)
+--------------------------------------------------------------------------------------------------
+<h1>GWAS Project<h1>
+
+<h2>Manhattan and QQ Plot (plot_mqq)</h2>
 
 For the QQ and Manhattan plots the default values ​​are the following:
 ```
