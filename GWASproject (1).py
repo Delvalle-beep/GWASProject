@@ -6,7 +6,6 @@
 
 from matplotlib.backends.backend_pdf import PdfPages
 import matplotlib.pyplot as plt
-from gwaslab.Log import Log
 import gwaslab as gl
 import pandas as pd
 import argparse
