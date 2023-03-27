@@ -3,7 +3,6 @@
 
 from matplotlib.backends.backend_pdf import PdfPages
 import matplotlib.pyplot as plt
-import urllib.request
 import gwaslab as gl
 import pandas as pd
 import argparse
