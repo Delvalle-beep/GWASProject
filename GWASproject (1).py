@@ -2,197 +2,148 @@
 # coding: utf-8
 
 from matplotlib.backends.backend_pdf import PdfPages
+from pyensembl import EnsemblRelease
 import matplotlib.pyplot as plt
+import urllib.request
 import gwaslab as gl
 import pandas as pd
 import argparse
 import sys
 import os
 
-
-def process_data(
-    input_path,
-    output_path,
-    cut,
-    sig_level,
-    skip,
-    highlight,
-    pinpoint,
-    pinpoint_color,
-    anno,
-    highlight_color,
-    build,
-    xymt,
-    chr_filter
-):
+def process_data(input_paths,output_path,cut,sig_level,skip,highlight,
+                 pinpoint,pinpoint_color,anno,highlight_color,build,
+                 xymt,chr_filter,vcf_file):
     
-    def download_ref_file(build):
-        if build not in ["19","38"]:
-            raise ValueError("Invalid build parameter")     
-            
-    filename = f"ensembl_hg{build}_gtf"
-
-    i = 0
-    for input_path in input_path:
+    #Checks if the build was declared a valid value
+    if build not in ["19","38"]:
+        raise ValueError("Invalid build parameter")
+        
+    #variable to define the reference file to be downloaded  
+    filename = f"1kg_eas_hg{build}"
+    
+    #The counter has been defined to count the number of files received
+    #in input and in this way save the plot according the file runs
+    for i, input_path in enumerate(input_paths):
         df=pd.read_csv(input_path,sep="\t")
         print('File data', input_path)
         if 'snpid' or 'SNPID' not in df.columns:
-            df['snpid'] = df.apply(lambda row: f"{row['chromosome']}:
-                                   {row['base_pair_location']}:
-                                   {row['effect_allele']}:
-                                   {row['other_allele']}", 
-                                   axis=1)
-     
-        gl.download_ref(filename)
-#---------------------------------------------------------------------------------------------# 
-        ##ISSUE##
-        gtf_df = pd.read_csv(gl.get_path(filename),
-                             sep="\t",
-                             dtype={"gene_id": str,
-                                    "attribute": str},
-                             low_memory=False,
-                             usecols=[
-                                 0,
-                                 1,
-                                 2,
-                                 3,
-                                 4,
-                                 5,
-                                 6,
-                                 7,
-                                 8], 
-                             names=["seqname",
-                                    "source",
-                                    "feature",
-                                    "start",
-                                    "end",
-                                    "score",
-                                    "strand",
-                                    "frame",
-                                    "attribute"]
-                            )
-        gtf_df.rename(columns={'seqname': 'chromosome'}, inplace=True)
-        gtf_df['gene_name'] = gtf_df['attribute'].str.extract('gene_name "([^"]+)"', expand=False)
-        gtf_df['chromosome'] = gtf_df['chromosome'].replace({'X': '23', 'Y': '24', 'MT': '25'})
-        gtf_df['chromosome']=gtf_df['chromosome'].astype(int)
-        
-        merge_df= pd.merge(df,gtf_df,how='left',on='chromosome')
+            df['snpid'] = df.apply(lambda row: f"{row['chromosome']}:{row['base_pair_location']}:{row['effect_allele']}:{row['other_allele']}",axis=1)
+        print(df.head())
 
-        #I can't merge, the error says "Unable to allocate 2.71 TiB for an array with shape (373042411878,) and data type int64", and I can't fix it even doing the data conversion
- #---------------------------------------------------------------------------------------------#       
+        #If the user wants to include the LD in the plot 
+        if args.vcf_file=='True':
+            # Define the path where the file should be saved
+            file_path = os.path.expanduser(f'~/.gwaslab/EAS.ALL.split_norm_af.1kgp3v5.hg{build}.vcf.gz')
+            # Check if the file already exists in the specified path
+            if os.path.exists(file_path):
+                print(f'File {filename} already exists at path {file_path}')
+            else:
+            # If the file does not exist, download it using the gl.download_ref() function
+                print(f'The file {filename} was not found on the computer. Downloading the file...')
+                gl.download_ref(filename)
+                
+        #If the user wants to include the LD from its own file
+        elif args.vcf_file is not None:
+            file_path = args.vcf_file
+            if os.path.exists(file_path):
+                print(f'The file {file_path} was found')
+            else:
+                print(f'The file {file_path}  was not found')
+        #If the user doesn't set anything in the vcf_file, continue the script normally 
+        else:
+             pass
+
+        #Loading the data and transforming it into PLINK format
         mysumstats = gl.Sumstats(
-            merged_df,
-            fmt="plink",
-            snpid="snpid",
-            rsid="variant_id",
-            chrom="chromosome",
-            pos="base_pair_location",
-            ea="effect_allele",
-            nea="other_allele",
-            beta="beta",
-            se="standard_error",
-            p="p_value",
-            build=build
+            df,
+            fmt='plink',
+            beta='beta',
+            p='p_value',
+            build=build,
+            snpid='snpid',
+            rsid='variant_id',
+            ea='effect_allele',
+            chrom='chromosome',
+            nea='other_allele',
+            se='standard_error',
+            pos='base_pair_location',
         )
-        
-        mysumstats.infer_build()
-        
-        mysumstats.fix_id(
-            fixchrpos=True
-        )
+
+        #To standardize chromosome notation
+        #sexual and mitochondrial, these notations
+        #can be modified later with the 'xymt' command
         mysumstats.fix_chr(
             x=(23,"X"),
             y=(24,"Y"),
             mt=(25,"MT")
         )
+
         mysumstats.basic_check()
-        
-        mysumstats.assign_rsid(
-            ref_rsid_tsv = gl.get_path(filename),
-            chr_dict = gl.get_number_to_NC(build=build)
-        )
-        
-        mysumstats.get_lead(
-           sig_level=sig_level,
-           xymt=xymt,
-           anno=anno,
-           source="ensembl",
-           verbose=True
-        )
-    
+
         file_name = output_path + 'Manhattan' + str(i) +'.png'
-        #file_name2 = output_path + 'Regional' + str(i) +'.pdf'
-        #file_name3 = output_path + 'Regional_other' + str(i) +'.pdf'  
-        
+        file_name2 = output_path + 'Regional' + str(i) +'.pdf'
+        #file_name3 = output_path + 'Regional_other' + str(i) +'.pdf'
+
+        #To filter the chromosomes or range to be plotted
         if args.chr_filter:
-            mysumstats.filter_value('CHR>1 & CHR<5').plot_mqq(
-                save=file_name,
-                saveargs={"dpi":100,"facecolor":"white"},
+            mysumstats.filter_value(chr_filter).plot_mqq(
+                mode="m",
                 cut=cut,
-                sig_level=sig_level,
                 anno=anno,
                 skip=skip,
-                highlight=highlight,
+                save=file_name,
                 pinpoint=pinpoint,
+                sig_level=sig_level,
+                highlight=highlight,
                 pinpoint_color=pinpoint_color,
-                highlight_color=highlight_color              
+                highlight_color=highlight_color,
+                saveargs={"dpi":80,"facecolor":"white"}
             )
         else:
             mysumstats.plot_mqq(
-                save=file_name,
-                saveargs={"dpi":100,"facecolor":"white"},
+                mode="m",
                 cut=cut,
-                sig_level=sig_level,
                 anno=anno,
                 skip=skip,
-                highlight=highlight,
+                save=file_name,
                 pinpoint=pinpoint,
+                sig_level=sig_level,
                 pinpoint_color=pinpoint_color,
-                highlight_color=highlight_color              
+                highlight_color=highlight_color,
+                saveargs={"dpi":80,"facecolor":"white"}
             )
-             
-      # mysumstats.get_lead(anno=anno)
-      # mysumstats.plot_mqq(save= file_name2,region=(7,156538803,157538803),vcf_path=gl.get_path(filename))
-      # mysumstats.plot_mqq(save= file_name3, mode="r", region=(7,156538803,157538803),region_grid=True, #gtf_path="ensembl")
-        
-    i +=1
 
+        mysumstats.get_lead()
+        
+        mysumstats.plot_mqq(save= file_name2,mode ='r',region=(15,7502788,750278800))
+
+    i +=1
+        
 #creating the parser
 parser = argparse.ArgumentParser(description='Process multiple input paths')
 
 #Adding the input path argument
-parser.add_argument('--input_path', type=str, nargs='+', help='input paths')
+parser.add_argument('--build',help='')
+parser.add_argument('--chr_filter',help='')
+parser.add_argument('--xymt',default=True,help='')
 parser.add_argument('--output_path', type=str, help='output path')
-parser.add_argument('--sig_level', type=float,default=5e-8,help='sig_level value for plot_mqq')
-parser.add_argument('--cut', type=int, default=0, help='cut value for plot_mqq')
-parser.add_argument('--skip', type=int, default=0, help='skip value for plot_mqq')
+parser.add_argument('--input_paths', type=str, nargs='+', help='input paths')
+parser.add_argument('--cut',type=list,help='cut value for plot_mqq')
+parser.add_argument('--skip',default=0, help='skip value for plot_mqq')
 parser.add_argument('--highlight',default=[],nargs="*", help='highlight value for plot_mqq')
 parser.add_argument('--pinpoint', type=list, default=[], help='pinpoint value for plot_mqq')
+parser.add_argument('--sig_level', type=float,default=5e-8,help='sig_level value for plot_mqq')
 parser.add_argument('--pinpoint_color', type=str, default="red", help='pinpoint_color value for plot_mqq')
-parser.add_argument('--anno',type=bool,default=True,help='The variants to annotate will be selected automatically using a sliding window with windowsize=500kb')
 parser.add_argument('--highlight_color', type=str, default='#CB132D', help='highlight_color value for plot_mqq')
-parser.add_argument('--build',help='')
-parser.add_argument('--xymt',default=True,help='')
-parser.add_argument('--chr_filter',help='')
+parser.add_argument('--anno',default="GENENAME",help='The variants to annotate will be selected automatically using a sliding window with windowsize=500kb')
+parser.add_argument('--vcf_file',help="")
 
 #parsing the arguments
 args = parser.parse_args()
 
 #processing the data
-process_data(args.input_path,
-             args.output_path,
-             args.cut,
-             args.sig_level, 
-             args.skip,
-             args.highlight, 
-             args.pinpoint, 
-             args.pinpoint_color, 
-             args.anno,
-             args.highlight_color,
-             args.build,
-             args.xymt,
-             args.chr_filter)
-
+process_data(args.input_paths,args.output_path,args.cut,args.sig_level,args.skip,args.highlight,args.pinpoint, args.pinpoint_color,args.anno,args.highlight_color,args.build,args.xymt,args.chr_filter,args.vcf_file)
 
 
 
