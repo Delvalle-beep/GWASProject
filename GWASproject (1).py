@@ -126,10 +126,27 @@ def process_data(input_paths,output_path,cut,sig_level,skip,highlight,
             pos = row['POS']
             region_start = pos - 500000
             region_end = pos + 500000
-            mysumstats.plot_mqq(save=file_name2,
-                                region=(chrom, region_start, region_end),
-                                saveargs={"dpi":80,"facecolor":"white"},
-                                build=build)
+            
+            if args.vcf_file=='True':
+                mysumstats.plot_mqq(
+                    save=file_name2,
+                    vcf_path=gl.get_path(filename),
+                    region=(chrom,region_start,region_end),
+                    saveargs={"dpi":80,"facecolor":"white"}
+                )
+            elif args.vcf_file is not None:
+                mysumstats.plot_mqq(
+                    save=file_name2,
+                    vcf_path=gl.get_path(vcf_file),
+                    region=(chrom,region_start,region_end),
+                    saveargs={"dpi":80,"facecolor":"white"}
+                )
+            else:
+                mysumstats.plot_mqq(
+                    save=file_name2,
+                    region=(chrom,region_start,region_end),
+                    saveargs={"dpi":80,"facecolor":"white"}
+                )
 
     i +=1
         
@@ -156,6 +173,4 @@ args = parser.parse_args()
 
 #processing the data
 process_data(args.input_paths,args.output_path,args.cut,args.sig_level,args.skip,args.highlight,args.pinpoint, args.pinpoint_color,args.anno,args.highlight_color,args.build,args.chr_filter,args.vcf_file)
-
-
 
