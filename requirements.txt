@@ -1,0 +1,5 @@
+matplotlib
+gwaslab==3.4.4
+pandas
+argparse
+pyensembl
