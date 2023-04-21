@@ -12,12 +12,6 @@ import argparse
 import sys
 import os
 
-def install(package):
-    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
-
-with open('requirements.txt') as f:
-    for line in f:
-        install(line)
         
 def process_data(input_paths,output_path,cut,sig_level,skip,highlight,
                  pinpoint,pinpoint_color,anno,highlight_color,build,
