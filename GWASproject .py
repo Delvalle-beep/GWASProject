@@ -1,18 +1,15 @@
 #!/usr/bin/env python
 # coding: utf-8
-
 from matplotlib.backends.backend_pdf import PdfPages
 from pyensembl import EnsemblRelease
 import matplotlib.pyplot as plt
 import urllib.request
 import gwaslab as gl
 import pandas as pd
-import subprocess
 import argparse
 import sys
 import os
 
-        
 def process_data(input_paths,output_path,cut,sig_level,skip,highlight,
                  pinpoint,pinpoint_color,anno,highlight_color,build,
                  chr_filter,vcf_file):
@@ -72,15 +69,6 @@ def process_data(input_paths,output_path,cut,sig_level,skip,highlight,
             nea='other_allele',
             se='standard_error',
             pos='base_pair_location',
-        )
-
-        #To standardize chromosome notation
-        #sexual and mitochondrial, these notations
-        #can be modified later with the 'xymt' command
-        mysumstats.fix_chr(
-            x=(23,"X"),
-            y=(24,"Y"),
-            mt=(25,"MT")
         )
 
         mysumstats.basic_check()
@@ -160,11 +148,11 @@ parser.add_argument('--build',help='')
 parser.add_argument('--chr_filter',help='')
 parser.add_argument('--output_path', type=str, help='output path')
 parser.add_argument('--input_paths', type=str, nargs='+', help='input paths')
-parser.add_argument('--cut',type=list,help='cut value for plot_mqq')
-parser.add_argument('--skip',default=0, help='skip value for plot_mqq')
+parser.add_argument('--cut',type=int,help='cut value for plot_mqq')
+parser.add_argument('--skip',type=int,default=0, help='skip value for plot_mqq')
 parser.add_argument('--highlight',default=[],nargs="*", help='highlight value for plot_mqq')
 parser.add_argument('--pinpoint',type=list, default=[],help='pinpoint value for plot_mqq')
-parser.add_argument('--sig_level', type=float,default=5e-8,help='sig_level value for plot_mqq')
+parser.add_argument('--sig_level',default=5e-8,help='sig_level value for plot_mqq')
 parser.add_argument('--pinpoint_color', type=str, default="red", help='pinpoint_color value for plot_mqq')
 parser.add_argument('--highlight_color', type=str, default='#CB132D', help='highlight_color value for plot_mqq')
 parser.add_argument('--anno',default="GENENAME",help='The variants to annotate will be selected automatically using a sliding window with windowsize=500kb')
@@ -175,4 +163,3 @@ args = parser.parse_args()
 
 #processing the data
 process_data(args.input_paths,args.output_path,args.cut,args.sig_level,args.skip,args.highlight,args.pinpoint, args.pinpoint_color,args.anno,args.highlight_color,args.build,args.chr_filter,args.vcf_file)
-
