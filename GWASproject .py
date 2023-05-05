@@ -31,30 +31,36 @@ def process_data(input_paths,output_path,cut,sig_level,skip,highlight,
             df['snpid'] = df.apply(lambda row: f"{row['chromosome']}:{row['base_pair_location']}:{row['effect_allele']}:{row['other_allele']}",axis=1)
         print(df.head())
 
-        #If the user wants to include the LD in the plot 
-        if args.vcf_file=='True':
-            # Define the path where the file should be saved
-            file_path = os.path.expanduser(f'~/.gwaslab/1kgp3v5.hg{build}.vcf.gz')
+        vcf_path = os.path.expanduser(f'~/.gwaslab/EAS.ALL.split_norm_af.1kgp3v5.hg{build}.vcf.gz')
+        vcf_index_path = f'{vcf_path}.tbi'
+
+        # If the user wants to include the LD in the plot
+        if args.vcf_file == 'True':
             # Check if the file already exists in the specified path
-            if os.path.exists(file_path):
-                print(f'File {filename} already exists at path {file_path}')
+            if os.path.isfile(vcf_path):
+                print(f'File {filename} already exists at path {vcf_path}')
             else:
-            # If the file does not exist, download it using the gl.download_ref() function
+                # If the file does not exist, download it using the gl.download_ref() function
                 print(f'The file {filename} was not found on the computer. Downloading the file...')
                 gl.download_ref(filename)
-                
-        #If the user wants to include the LD from its own file
-        elif args.vcf_file is not None:
-            file_path = args.vcf_file
-            if os.path.exists(file_path):
-                print(f'The file {file_path} was found')
-            else:
-                print(f'The file {file_path}  was not found')
-                sys.exit(1)
-        #If the user doesn't set anything in the vcf_file, continue the script normally 
-        else:
-             pass
 
+        # If the user wants to include the LD from its own file
+        elif args.vcf_file is not None:
+            if os.path.exists(args.vcf_file):
+                file_path = args.vcf_file
+                if file_path.endswith('.vcf.gz'):
+                    vcf_path = file_path
+                    vcf_index_path = f'{vcf_path}.tbi'
+                else:
+                    print(f'Error: the VCF file specified by the user does not end with the expected extension ".vcf.gz"')
+                    sys.exit(1)
+            else:
+                print(f'The file {args.vcf_file}  was not found')
+                sys.exit(1)
+
+        # If the user doesn't set anything in the vcf_file, continue the script normally
+        else:
+            pass
         #Loading the data and transforming it into PLINK format
         mysumstats = gl.Sumstats(
             df,
@@ -68,7 +74,7 @@ def process_data(input_paths,output_path,cut,sig_level,skip,highlight,
             chrom='chromosome',
             nea='other_allele',
             se='standard_error',
-            pos='base_pair_location',
+            pos='base_pair_location'
         )
 
         mysumstats.basic_check()
@@ -151,7 +157,7 @@ parser.add_argument('--input_paths', type=str, nargs='+', help='input paths')
 parser.add_argument('--cut',type=int,help='cut value for plot_mqq')
 parser.add_argument('--skip',type=int,default=0, help='skip value for plot_mqq')
 parser.add_argument('--highlight',default=[],nargs="*", help='highlight value for plot_mqq')
-parser.add_argument('--pinpoint',type=list, default=[],help='pinpoint value for plot_mqq')
+parser.add_argument('--pinpoint',default=[],nargs="*",help='pinpoint value for plot_mqq')
 parser.add_argument('--sig_level',default=5e-8,help='sig_level value for plot_mqq')
 parser.add_argument('--pinpoint_color', type=str, default="red", help='pinpoint_color value for plot_mqq')
 parser.add_argument('--highlight_color', type=str, default='#CB132D', help='highlight_color value for plot_mqq')
