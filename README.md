@@ -4,7 +4,7 @@
 
 GWAS Project is a script that allows you to generate visualizations from summary statistics of a genome-wide study in a fully customized and automated way.
 The purpose of its construction is to automate the researcher's time to carry out analyzes of a broad genome study, since it is a very complete and easy-to-use tool.
-Its differential lies in having a direct connection with Ensembl, which facilitates the identification of significant variants of the study.
+Its differential lies in having a direct connection with <a href="https://www.ensembl.org/index.html">Ensembl</a>, which facilitates the identification of significant variants of the study.
 
 <h2>Quick Start</h2>
 
