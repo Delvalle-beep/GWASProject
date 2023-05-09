@@ -30,7 +30,7 @@ The console output should start like this:
 
 An example of the plots that can be generated with the script are:
 
-![image.png](..tutorial-images/image.png)
+![image.png](..tutorial-images/image1.png)
 ![Regional1intro](../tutorial-images/Regional1intro.png)
 ![Regional2intro](../tutorial-images/Regional2intro.png)
 
