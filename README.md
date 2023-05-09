@@ -7,17 +7,17 @@ The purpose of its construction is to automate the researcher's time to carry ou
 
 <h2>Quick Start</h2>
 
-The mandatory arguments to run the program are "input_path" and "output_path"
+The mandatory arguments to run the program are "input_path","output_path" and "build"
 
 Example:
 ```
-python GWASproject.py --input_path 'your/input/path/' --output_path 'your/output/path'
+python GWASproject.py --input_path 'your/input/path/' --output_path 'your/output/path' --build 'version of the genome being used in the genetic study'
 ```
 if you want to run more than one file at the same time you just need to separete it with comma 
 
 Example:
 ```
-python GWASproject.py --input_path 'your/input/path/', 'your/input/path2/' ,'your/input/path3/' --output_path 'your/output/path'
+python GWASproject.py --input_path 'your/input/path/', 'your/input/path2/' ,'your/input/path3/' --output_path 'your/output/path' --build '19'
 ```
 The console output should start like this:
 
