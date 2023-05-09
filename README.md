@@ -97,181 +97,59 @@ python GWASproject.py --input_path 'your/input/path/', 'your/input/path2/' ,'you
 ```
 <b><i>Mandatorily, for the script to carry out the expected work, the input path must be defined, so that the study in question can be analyzed, an output path so that the generated files can be saved and shown, and finally, the version must be informed. of the genome on which the study was constructed.</i></b>
 
+So that the script can read the columns of the loaded dataset, the column labels of this file must be informed. By default, GWASProject has a pre-definition of the most used labels, which are:
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-For the QQ and Manhattan plots the default values ​​are the following:
+```         
+['beta'],['p_value'],['snpid'],['variant_id'],['effect_allele'],['chromosome'],['other_allele'],
+['standard_error'],['base_pair_location']          
 ```
-mysumstats.plot_mqq(
-          anno=True,
-          cut=0,
-          skip=0,
-          sig_level=5e-8,
-          highlight = [],
-          highlight_color="#CB132D",
-          pinpoint=[],
-          pinpoint_color ="red",
-          marker_size=(5,25),
-          build="19",
-          region_mqq=None,
-          saveargs={"dpi":400,"facecolor":"white"}
-          )
-```
-<ul>
-<li><b>Skip:</b> sometimes it is not necessary to plot all variants, we can skip the insignicant variants . For example, we can exclude varints with -log10p lower than 3 from the plot by specifying skip=3</li>
-Use this command to set:
-</br>
+![image.png](../tutorial-images/image4.png)
 
+These columns in turn are formatted within the script to the <a href="https://www.cog-genomics.org/plink/1.9/formats">PLINK</a> format.
+Using the <a href="https://www.cog-genomics.org/plink/1.9/formats">PLINK</a> format, these columns change their label to:
+
+```         
+CHR=['chromosome']
+POS=['base_pair_location']
+rsID=['variant_id']
+P=['p_value']
+EA=['effect_allele']
+NEA=['other_allele']
+BETA=['beta']
+SE=['standard_error']
+SNPID=['snpid']
+```     
+![image.png](../tutorial-images/image5.png)
+
+<h2>File output</h2>
+To define a path where the files generated after processing will be saved, you must define the  <b>output_path</b>. 
+An application example is:
 ```
---skip "0"
+python GWASproject.py --input_path 'your/input/path/', 'your/input/path2/' ,'your/input/path3/' --output_path 'your/output/path' 
+```
+Unlike the previous topic, the <b>output_path</b> argument only receives a path where all the study files that were processed by the script will be saved.
+
+It is important to point out that the files are saved according to their indexing in the order in which it was defined in the <b>input_path</b> argument.
+For example, if you run the command:
+```
+python GWASproject.py --input_path 'first', 'second/' ,'third' 
+```
+In the folder defined in the <b>output_path</b>, it will be saved as:
+```
+“first1” , “second2”, “third3”
 ```
 
-</br>
-<li><b>Cut:</b>loci with extremly large -log10(P) value are very likely to dwarf other significant loci , so we want to scale down the extrame loci from a certain threshold.</li>
-Use this command to set:
-</br>
+<h2>Genome build version</h2>
 
-```
---cut "0"
-```
 
-</br>
-<li><b>Sig_level:</b>genome-wide significance threshold. Specify the P value threshold.</li>
-</br>
-Use this command to set:
 
-```
---sig_level "5e-8"
-```
 
-</br>
-<li><b>Anno:</b>When it is set "True", the variants to annotate will be selected automatically using a sliding window with windowsize=500kb.</li>
-</br>
-Use this command to set:
 
-```
---anno True
-```
 
-</br>
-<li><b>Highlight:</b>A "type=list" element to specify the variants of loci for highlighting.</li>
-</br>
-Use this command to set:
 
-```
---highlight ["rs12509595","19:15040733:T:C"]
-```
 
-</br>
-<li><b>Highlight_color:</b>specify the color ussed for highlighting, RGB format.</li>
-</br>
-Use this command to set:
 
-```
---highlight_color "#CB132D"
-```
 
-</br>
-<li><b>Pinpoint:</b>a list of SNPIDs.</li>
-</br>
-Use this command to set:
 
-```
---pinpoint ["rs7989823"]
-```
 
-</br>
-<li><b>Pinpoint_color:</b>color for pinpoint.</li>
-</br>
-Use this command to set:
 
-```
---pinpoint_color "red"
-```
-
-</br>
-<li><b>Build:</b>genome build version "19" or "38".</li>
-</br>
-<li><b>Region_mqq:</b>A "type=tuple" element to define wich region to plot. Example: region=(7,156538803,157538803)</li>
-</br>
-Use this command to set:
-
-```
---region_mqq (7,,156538803,157538803) 
-```
-
-</br>
-<li><b>marker_sizer:</b>It define the marker size,is defined by two integers, an example of use is:marker_size=(5,10)</li>
-</br>
-Use this command to set:
-
-```
---marker_size (5,25)
-```
-
-</br>
-</ul>
-
-#Regional Plot
-
-For the Regional Plot  the default values ​​are the following:
-```
-mysumstats.plot_mqq(
-          anno=True,
-          cut=0,
-          skip=0,
-          sig_level=5e-8,
-          highlight = [],
-          highlight_color="#CB132D",
-          pinpoint=[],
-          pinpoint_color ="red",
-          region_regPlot=None,
-          vcf_path=None,
-          vcf_chr_dict=None,
-          mode="r"
-          )
-```
-Many of the arguments are also used in the Manhattan and QQ plots and have the same definition, the definition of additional arguments will be added below.
-
-<ul>
-<li><b>Region_regPlot:</b> sometimes it is not necessary to plot all variants, we can skip the insignicant variants . For example, we can exclude varints with -log10p lower than 3 from the plot by specifying skip=3. This argument is used to uniquely define the region plotted on regional plots only.</li>
-Use this command to set:
-</br>
-```
---region_regPlot (7,,156538803,157538803)
-```
-</br>
-<li><b>Vcf_path:</b>If you want to load a reference genotype just add the path</li>
-Use this command to set:
-</br>
-```
---vcf_path 'C:/This/Is/My/Path'
-```
-</br>
-<li><b>Vcf_chr_dict:</b>This argument is defined to select one or a portion of chromosomes to be used in the reference genotype. This already has a built-in get() function that filters the chromosome you would like to reference.</li>
-</br>
-Use this command to set:
-```
---vcf_chr_dict '6'
-```
-</br>
-</ul>
