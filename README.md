@@ -21,7 +21,7 @@ python GWASproject.py --input_path 'your/input/path/', 'your/input/path2/' ,'you
 ```
 The console output should start like this:
 
-![image.png](./image.png)
+![image.png](../tutorial-images/image.png)
 
 <ul>
 <li>Input files must be in "csv" or "tsv" format</li>
@@ -30,9 +30,10 @@ The console output should start like this:
 
 An example of the plots that can be generated with the script are:
 
-![image.png](..tutorial-images/image1.png)
+![image1.png](../tutorial-images/image1.png)
 ![Regional1intro](../tutorial-images/Regional1intro.png)
 ![Regional2intro](../tutorial-images/Regional2intro.png)
+![image3.png](../tutorial-images/image3.png)
 
 The script is an optimization of the <a href="https://cloufield.github.io/gwaslab/">"GWASLAB"</a> library.
 To get more personalized results some variables can be set, learn more in the next session.
