@@ -12,7 +12,12 @@ import os
 
 def process_data(input_paths,output_path,cut,sig_level,skip,highlight,
                  pinpoint,pinpoint_color,anno,highlight_color,build,
-                 chr_filter,vcf_file):
+                 chr_filter,vcf_file,suggestive_sig_line,suggestive_sig_level,
+                suggestive_sig_line_color):
+    
+    if suggestive_sig_level is not None:
+        suggestive_sig_line = True
+        suggestive_sig_level = float(suggestive_sig_level)
     
     #Checks if the build was declared a valid value
     if build not in ["19","38"]:
@@ -82,7 +87,7 @@ def process_data(input_paths,output_path,cut,sig_level,skip,highlight,
         file_name = output_path + 'Manhattan' + str(i) +'.png'
         
         #file_name3 = output_path + 'Regional_other' + str(i) +'.pdf'
-
+        
         #To filter the chromosomes or range to be plotted
         if args.chr_filter:
             mysumstats.filter_value(chr_filter).plot_mqq(
@@ -96,6 +101,9 @@ def process_data(input_paths,output_path,cut,sig_level,skip,highlight,
                 highlight=highlight,
                 pinpoint_color=pinpoint_color,
                 highlight_color=highlight_color,
+                suggestive_sig_line=suggestive_sig_line,
+                suggestive_sig_level=suggestive_sig_level,
+                suggestive_sig_line_color=suggestive_sig_line_color,
                 saveargs={"dpi":80,"facecolor":"white"}
             )
         else:
@@ -110,12 +118,15 @@ def process_data(input_paths,output_path,cut,sig_level,skip,highlight,
                 highlight=highlight,
                 pinpoint_color=pinpoint_color,
                 highlight_color=highlight_color,
+                suggestive_sig_line=suggestive_sig_line,
+                suggestive_sig_level=suggestive_sig_level,
+                suggestive_sig_line_color=suggestive_sig_line_color,
                 saveargs={"dpi":80,"facecolor":"white"}
             )
 
         x = mysumstats.get_lead()
         print(x)
-        
+        #O REGIONAL PLOT É AQUI
         for i, row in x.iterrows():
             file_name2 = output_path + 'Regional_Plot' + str(i) +'.png'
             chrom = row['CHR']
@@ -126,6 +137,7 @@ def process_data(input_paths,output_path,cut,sig_level,skip,highlight,
             if args.vcf_file=='True':
                 mysumstats.plot_mqq(
                     save=file_name2,
+                    anno=anno,
                     vcf_path=gl.get_path(filename),
                     region=(chrom,region_start,region_end),
                     saveargs={"dpi":80,"facecolor":"white"}
@@ -133,6 +145,7 @@ def process_data(input_paths,output_path,cut,sig_level,skip,highlight,
             elif args.vcf_file is not None:
                 mysumstats.plot_mqq(
                     save=file_name2,
+                    anno=anno,
                     vcf_path=gl.get_path(vcf_file),
                     region=(chrom,region_start,region_end),
                     saveargs={"dpi":80,"facecolor":"white"}
@@ -163,9 +176,11 @@ parser.add_argument('--pinpoint_color', type=str, default="red", help='pinpoint_
 parser.add_argument('--highlight_color', type=str, default='#CB132D', help='highlight_color value for plot_mqq')
 parser.add_argument('--anno',default="GENENAME",help='The variants to annotate will be selected automatically using a sliding window with windowsize=500kb')
 parser.add_argument('--vcf_file',default=None,help="")
-
+parser.add_argument('--suggestive_sig_level',default=0,type=float,help='')
+parser.add_argument('--suggestive_sig_line',default=None,help='')
+parser.add_argument('--suggestive_sig_line_color',default='red',help='')
 #parsing the arguments
 args = parser.parse_args()
 
 #processing the data
-process_data(args.input_paths,args.output_path,args.cut,args.sig_level,args.skip,args.highlight,args.pinpoint, args.pinpoint_color,args.anno,args.highlight_color,args.build,args.chr_filter,args.vcf_file)
+process_data(args.input_paths,args.output_path,args.cut,args.sig_level,args.skip,args.highlight,args.pinpoint, args.pinpoint_color,args.anno,args.highlight_color,args.build,args.chr_filter,args.vcf_file,args.suggestive_sig_line,args.suggestive_sig_level,args.suggestive_sig_line_color)
