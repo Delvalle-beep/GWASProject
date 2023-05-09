@@ -1,7 +1,7 @@
 
                                   |G|W|A|S| |P|R|O|J|E|C|T|
 
-
+<hr>
 GWAS Project is a script that allows you to generate visualizations from summary statistics of a genome-wide study in a fully customized and automated way.
 The purpose of its construction is to automate the researcher's time to carry out analyzes of a broad genome study, since it is a very complete and easy-to-use tool.
 Its differential lies in having a direct connection with <a href="https://www.ensembl.org/index.html">Ensembl</a>, which facilitates the identification of significant variants of the study.
@@ -39,11 +39,7 @@ An example of the plots that can be generated with the script are:
 The script is an optimization of the <a href="https://cloufield.github.io/gwaslab/">"GWASLAB"</a> library.
 To get more personalized results some variables can be set, learn more in the next session.
 
-<h2>Getting Started</h2>
-
-<b>A practical tool for working with GWAS summary statistics</b>
-GWAS Project is a script that allows you to generate visualizations from summary statistics of a genome-wide study in a fully customized and automated way.
-The purpose of its construction is to automate the researcher's time to carry out analyzes of a broad genome study, since it is a very complete and easy-to-use tool.
+<h2>Requirements</h2>
 
 The packages required to run GWAS Project are:
 <ul>
@@ -54,19 +50,19 @@ The packages required to run GWAS Project are:
 
 This guide will help you get more unique and personalized views for your study.
 
---------------------------------------------------------------------------------------------------
+<hr>
 
-<h3>What is GWAS?</h3>
+<h2>What is GWAS?</h2>
 Genome-wide association studies (GWAS) are extremely important for identifying genetic polymorphisms that are associated with a specific outcome. Essentially, these tools scan specific chromosomes to identify which polymorphisms are associated with a given outcome. Consequently, there is an entire technology involved in identifying eligible polymorphisms that may be associated with a particular clinical study, for example.
 
 The most common graph used for this type of study is called a Manhattan plot, and the degree of statistical significance required to identify a significant association between a polymorphism and a clinical outcome in GWAS is extremely conservative. That is, the P-value has to be very low, to the point of being in scientific notation, which is a requirement because it refers to another important concept in statistics. In the case of GWAS, since hundreds or thousands of polymorphisms are evaluated simultaneously, we need to correct the P-value using a technique called the "Bonferroni correction," where the P-value is multiplied according to each comparison. Therefore, the P-values need to be very low, in scientific notation, to be considered significant.
 
 It is important to note that GWAS studies require a large sample size of thousands of individuals to be evaluated because we need high statistical power.
 
-<h3>What is SNPs?</h3>
+<h2>What is SNPs?</h2>
 Single nucleotide polymorphisms (SNPs) are genetic variants that occur at a determined frequency in a population. This is the main difference between SNPs and simple mutations. SNPs occur at expected and determined frequencies, while mutations occur at unexpected frequencies. Furthermore, it is important to highlight that SNPs occur with a certain regularity in our genome. It is estimated that there is one SNP per thousand nucleotides, considering that our genome has 3 billion nucleotides, the estimate is that there are 3 million SNPs (although this can vary according to the study). More than 100 million SNPs that have some clinical or biological significance have been reported in the literature. It is important to note that many of these SNPs do not affect our organism or biology, as they can occur in regions of our DNA that will not affect gene expression. However, others may affect genes, generate important problems, metabolic disorders, and may be risk factors for diseases.
 
-<h4>Study materials</h4>
+<h2>Study materials</h2>
 ![gwastutorialPrint](../tutorial-images/gwastutorialPrint.png)
 If population genetics or genome-wide association studies are new to you, I recommend visiting this <a href="https://cloufield.github.io/GWASTutorial/">website</a> for more in-depth content.
 
@@ -86,10 +82,9 @@ To delve even further into statistical and computational concepts, I strongly re
 
 Despite being originally written in Traditional Chinese, the site is well written and easily translated by public translation tools. I consider this the most complete and most explanatory material for beginners in the area.
 
---------------------------------------------------------------------------------------------------
 <h1>GWAS Project<h1>
 
-
+<hr>
 
 <h2>Manhattan and QQ Plot (plot_mqq)</h2>
 
