@@ -21,17 +21,16 @@ python GWASproject.py --input_path 'your/input/path/', 'your/input/path2/' ,'you
 ```
 The console output should start like this:
 
-![introScreen](../tutorial-images/introScreen.png)
+![image.png](./image.png)
 
 <ul>
 <li>Input files must be in "csv" or "tsv" format</li>
-<li>The script will return three pdf files as output files, these are the summary statistics results</li>
-<li>The plots generated will be Manhattan and regional</li>
+<li>The script will return a Manhattan plot for the GWAS summary statistics and a Regional plot for each significant variant in the study.</li>
 </ul>
 
-In this first case, the results obtained would be:
+An example of the plots that can be generated with the script are:
 
-![ManhattanPlotIntro](../tutorial-images/ManhattanPlotIntro.png)
+![image.png](..tutorial-images/image.png)
 ![Regional1intro](../tutorial-images/Regional1intro.png)
 ![Regional2intro](../tutorial-images/Regional2intro.png)
 
