@@ -82,11 +82,42 @@ To delve even further into statistical and computational concepts, I strongly re
 
 Despite being originally written in Traditional Chinese, the site is well written and easily translated by public translation tools. I consider this the most complete and most explanatory material for beginners in the area.
 
-<h1>GWAS Project<h1>
+<h1>Instructions for uset<h1>
+<h2>Loading files</h2>
+To load a file for reading in the script is simple, just inform the path to the file that you want to be read using the <b>input_path</b> command. 
+For example:
 
-<hr>
+```
+python GWASproject.py --input_path 'your/input/path/' 
+```
+GWASProject was developed to be able to read multiple files with just one command, just inform them in this reading format:
 
-<h2>Manhattan and QQ Plot (plot_mqq)</h2>
+```
+python GWASproject.py --input_path 'your/input/path/', 'your/input/path2/' ,'your/input/path3/'
+```
+<b><i>Mandatorily, for the script to carry out the expected work, the input path must be defined, so that the study in question can be analyzed, an output path so that the generated files can be saved and shown, and finally, the version must be informed. of the genome on which the study was constructed.</i></b>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 For the QQ and Manhattan plots the default values ​​are the following:
 ```
