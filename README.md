@@ -170,3 +170,19 @@ The Manhattan plot view for a <b>skip</b> value of 2 would be:
 
 ![image6.png](../tutorial-images/image6.png)
 
+<h2>Cut in plotted values</h2>
+The <b>cut</b> argument is used to define a cut value in plotting graphs of p values or -log10(p) values. 
+By supplying a numeric value for the <b>cut</b> argument, the plot will be limited to variants whose p-values or -log10(p) values are below this cut-off value. 
+This can be useful for highlighting the most significant or relevant variants on the graph, filtering out the rest.
+For example, if you set <b>cut</b> to 5, only variants with p values below 5 (or -log10(p) values above 5) will be displayed on the graph. 
+This allows you to focus on the strongest or most significant associations.
+
+Here is an example of how to use the argument:
+
+```
+python GWASproject.py --input_path 'your/input/path/' --output_path 'your/output/path' –build “19” –cut 5
+```
+
+The Manhattan plot view for a cut value of 5 would be:
+
+![image7.png](../tutorial-images/image7.png)
