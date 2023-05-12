@@ -140,12 +140,21 @@ In the folder defined in the <b>output_path</b>, it will be saved as:
 ```
 
 <h2>Genome build version</h2>
+It refers to the specific representation of the human genome used as a reference to identify genetic variations associated with traits or diseases. 
+The human genome is composed of a set of DNA sequences, and each sequence is identified by a specific position in the reference genome.
+The genome build version is usually identified by a number, such as GRCh37 (also known as hg19) or GRCh38 (also known as hg38), which are the most commonly used versions. 
+These designations correspond to different assemblies of the human genome, which are updated over time as new information is discovered about the structure of the genome.
+Currently, GWASProject only supports the most common versions, which are hg19 and hg38, to set the version used in the summary statistics file, just use the <b>build</b> argument.
 
+```
+python GWASproject.py –build “19”
+```
 
+This argument, together with <b>input_path</b> and <b>output_path</b> form the mandatory arguments for the script to run correctly, without informing them the script will return an error.
 
-
-
-
+```
+python GWASproject.py --input_path 'your/input/path/', 'your/input/path2/' ,'your/input/path3/' --output_path 'your/output/path' –build “19”
+```
 
 
 
