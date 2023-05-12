@@ -103,7 +103,7 @@ So that the script can read the columns of the loaded dataset, the column labels
 ['beta'],['p_value'],['snpid'],['variant_id'],['effect_allele'],['chromosome'],['other_allele'],
 ['standard_error'],['base_pair_location']          
 ```
-![image.png](../tutorial-images/image4.png)
+![image4.png](../tutorial-images/image4.png)
 
 These columns in turn are formatted within the script to the <a href="https://www.cog-genomics.org/plink/1.9/formats">PLINK</a> format.
 Using the <a href="https://www.cog-genomics.org/plink/1.9/formats">PLINK</a> format, these columns change their label to:
@@ -119,7 +119,7 @@ BETA=['beta']
 SE=['standard_error']
 SNPID=['snpid']
 ```     
-![image.png](../tutorial-images/image5.png)
+![image5.png](../tutorial-images/image5.png)
 
 <h2>File output</h2>
 To define a path where the files generated after processing will be saved, you must define the  <b>output_path</b>. 
@@ -156,9 +156,17 @@ This argument, together with <b>input_path</b> and <b>output_path</b> form the m
 python GWASproject.py --input_path 'your/input/path/', 'your/input/path2/' ,'your/input/path3/' --output_path 'your/output/path' –build “19”
 ```
 
+<h2>Skip variants</h2>
+The <b>skip</b> argument is used to skip a specified number of variants when generating a graph plotting p values or -log10(p) values.
+By supplying an integer value for the <b>skip</b> argument, the graph will be generated excluding the initial variants, skipping the specified number of variants. 
+This can be useful when your dataset is very large and you want to reduce the density of variants displayed in the chart to improve readability.
+For example, if you set <b>skip</b> to 10, then out of 10 variants, only one will be included in the graph. This can help reduce overlapping points on the graph, making it clearer and easier to interpret.
+Here is an example of how to use the argument:
 
+```
+python GWASproject.py --input_path 'your/input/path/' --output_path 'your/output/path' –build “19” –skip 2
+```
+The Manhattan plot view for a <b>skip</b> value of 2 would be:
 
-
-
-
+![image6.png](../tutorial-images/image6.png)
 
