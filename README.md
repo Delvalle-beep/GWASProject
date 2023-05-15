@@ -157,7 +157,7 @@ python GWASproject.py --input_path 'your/input/path/', 'your/input/path2/' ,'you
 ```
 
 <h2>Skip variants</h2>
-The <b>skip</b> argument is used to skip a specified number of variants when generating a graph plotting p values or -log10(p) values.
+The <b>skip</b> argument is used to skip a specified number of variants when generating a graph plotting <b>p-values</b> or <b>-log10(p)</b> values.
 By supplying an integer value for the <b>skip</b> argument, the graph will be generated excluding the initial variants, skipping the specified number of variants. 
 This can be useful when your dataset is very large and you want to reduce the density of variants displayed in the chart to improve readability.
 For example, if you set <b>skip</b> to 10, then out of 10 variants, only one will be included in the graph. This can help reduce overlapping points on the graph, making it clearer and easier to interpret.
@@ -171,10 +171,10 @@ The Manhattan plot view for a <b>skip</b> value of 2 would be:
 ![image6.png](../tutorial-images/image6.png)
 
 <h2>Cut in plotted values</h2>
-The <b>cut</b> argument is used to define a cut value in plotting graphs of p values or -log10(p) values. 
-By supplying a numeric value for the <b>cut</b> argument, the plot will be limited to variants whose p-values or -log10(p) values are below this cut-off value. 
+The <b>cut</b> argument is used to define a cut value in plotting graphs of <b>p-values</b> or <b>-log10(p)</b> values. 
+By supplying a numeric value for the <b>cut</b> argument, the plot will be limited to variants whose <b>p-values</b> or <b>-log10(p)</b> values are below this cut-off value. 
 This can be useful for highlighting the most significant or relevant variants on the graph, filtering out the rest.
-For example, if you set <b>cut</b> to 5, only variants with p values below 5 (or -log10(p) values above 5) will be displayed on the graph. 
+For example, if you set <b>cut</b> to 5, only variants with <b>p-values</b> below 5 (or <b>-log10(p)</b> values above 5) will be displayed on the graph. 
 This allows you to focus on the strongest or most significant associations.
 
 Here is an example of how to use the argument:
@@ -186,3 +186,20 @@ python GWASproject.py --input_path 'your/input/path/' --output_path 'your/output
 The Manhattan plot view for a cut value of 5 would be:
 
 ![image7.png](../tutorial-images/image7.png)
+
+<h2>Significance level</h2>
+The <b>sig_level</b> argument is used to define the level of statistical significance for plotting the <b>p-values</b> or <b>-log10(p)</b> values of the plotted graphs.
+By providing a numeric value for the <b>sig_level</b> argument, the argument will be highlighted with a horizontal line representing the threshold of statistical significance. This helps identify which variants have <b>p-values</b> below this threshold and are considered statistically significant.
+
+Here is an example of how to use the argument:
+
+```
+python GWASproject.py --input_path 'your/input/path/' --output_path 'your/output/path' –build “19” –sig_level 5e-6
+```
+For example, if you set <b>sig_level</b> to "5e-8", the graph will be plotted with a horizontal line representing a <b>p-value</b> of "5e-8". All variants with <b>p-values</b> below this threshold will be displayed above the line, indicating that they are statistically significant.
+
+The Manhattan plot view for a sig_level value of 5e-8 would be:
+
+![image1.png](../tutorial-images/image1.png)
+
+<i><b>It is important to say that this argument only accepts float values, and that the default value for this argument is 5e-8.</b></i>
