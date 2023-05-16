@@ -262,3 +262,5 @@ python GWASproject.py --input_path 'your/input/path/' --output_path 'your/output
 ```
 
 The Manhattan plot view for an <b>anno</b> value “GENENAME” would be:
+
+![image1.png](../tutorial-images/image1.png)
