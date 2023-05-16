@@ -189,7 +189,10 @@ The Manhattan plot view for a cut value of 5 would be:
 
 <h2>Significance level</h2>
 The <b>sig_level</b> argument is used to define the level of statistical significance for plotting the <b>p-values</b> or <b>-log10(p)</b> values of the plotted graphs.
-By providing a numeric value for the <b>sig_level</b> argument, the argument will be highlighted with a horizontal line representing the threshold of statistical significance. This helps identify which variants have <b>p-values</b> below this threshold and are considered statistically significant.
+
+By providing a numeric value for the <b>sig_level</b> argument, the argument will be highlighted with a horizontal line representing the threshold of statistical significance. 
+
+This helps identify which variants have <b>p-values</b> below this threshold and are considered statistically significant.
 
 Here is an example of how to use the argument:
 
@@ -272,3 +275,27 @@ python GWASproject.py --input_path 'your/input/path/' --output_path 'your/output
 The Manhattan plot view for an <b>anno</b> value “GENENAME” would be:
 
 ![image1.png](../tutorial-images/image1.png)
+
+<h2>Filter chromosomes</h2>
+The <b>chr_filter</b> argument is used to filter the variants based on the desired chromosomes during the generation of graphs plotted by <b>GWASProject</b>.
+
+The <b>chr_filter</b> allows you to specify one or more chromosomes that you want to include in the graphs. This is useful when you have data from multiple chromosomes but are only interested in viewing some of them.
+
+To use the chromosome filter, just specify the numbering or range of chromosome numbers you want to work with, for example:
+
+```
+python GWASproject.py --input_path 'your/input/path/' --output_path 'your/output/path' –build “19”  --chr_filter “CHR==1”
+```
+The Manhattan plot view for a <b>chr_filter</b> value equal to 1 would be:
+
+![image-1.png](../tutorial-images/image-1.png)
+
+or
+
+```
+python GWASproject.py --input_path 'your/input/path/' --output_path 'your/output/path' –build “19”  --chr_filter “CHR>=1  & CHR<7”
+```
+
+The Manhattan plot view for a <b>chr_filter</b> value equal to "CHR>=1 & CHR<7" would be:
+
+![image11.png](../tutorial-images/image11.png)
