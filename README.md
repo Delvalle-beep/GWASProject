@@ -329,3 +329,20 @@ To select the desired file, in addition to setting the value of <b>vcf_file</b> 
 An example view for <b>vcf_file</b> “True” using the hg19 reference would be:
 
 ![image14.png](../tutorial-images/image14.png)
+
+<h2>Suggestive sig level</h2>
+
+<b>suggestive_sig_line</b>
+This argument sets the significance level for the suggestive signal line on the genomic association plot. It is a numerical value that represents the significance threshold used to highlight variants that suggest an association with a condition or characteristic.
+
+Generally, a <b>p-value</b> below this threshold is considered suggestive of an association.
+<b><i>This argument only takes float values as input.</i></b>
+
+Used in conjunction with the <b>suggestive_sig_line</b> argument, the <b>suggestive_sig_line_color</b> argument sets the color of the suggestive signal line in the genomic association graph. 
+Can be specified as a string like “red” or hexadecimal like “#FF0000”.
+
+```
+python GWASproject.py --input_path 'your/input/path/' --output_path 'your/output/path' –build “19”  --suggestive_sig_level 5e-6 --suggestive_sig_line_color "pink"
+```
+
+![image00.png](../tutorial-images/image00.png)
