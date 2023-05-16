@@ -222,3 +222,43 @@ The Manhattan plot view for a value of <b>highligh</b> and <b>highlight_color</b
 ![image8.png](../tutorial-images/image8.png)
 
 Make sure that the value chosen for the <b>highlight</b> argument is valid and is from the dataset being read.
+
+<h2>Annotation</h2>
+The <b>anno</b> argument is used to specify the annotation of variants on graphs plotted by <b>GWASProject</b>.
+
+The <b>anno</b> refers to the column of the data that contains the annotation information for each variant.
+
+This argument takes boolean, string or “GENENAME” values:
+
+Boolean:
+If the <b>anno</b> argument is set to <b>True</b>, the annotated variants will be automatically selected using a 500kb window and the chromosome:position format.
+Here is an example of how to use the argument:
+
+```
+python GWASproject.py --input_path 'your/input/path/' --output_path 'your/output/path' –build “19”  --anno “True”
+```
+
+The Manhattan plot view for a “True” year value would be:
+
+String:
+the name of a column used for annotation will be used
+Here is an example of how to use the argument:
+
+```
+python GWASproject.py --input_path 'your/input/path/' --output_path 'your/output/path' –build “19”  --anno “rsID”
+```
+
+The Manhattan plot view for an anno “rsID” value would be:
+
+![image10.png](..tutorial-images/image10.png)
+
+GENENAME:
+This value is set to the default. Gene names are automatically annotated using <a href="https://github.com/openvax/pyensembl">pyensembl</a>.
+
+Here is an example of how to use the argument:
+
+```
+python GWASproject.py --input_path 'your/input/path/' --output_path 'your/output/path' –build “19”  --anno “GENENAME”
+```
+
+The Manhattan plot view for an <b>anno</b> value “GENENAME” would be:
