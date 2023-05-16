@@ -223,22 +223,30 @@ The Manhattan plot view for a value of <b>highligh</b> and <b>highlight_color</b
 
 Make sure that the value chosen for the <b>highlight</b> argument is valid and is from the dataset being read.
 
+<h2>Pinpoint argument</h2>
+The <b>pinpoint</b> argument and the <b>pinpoint_color</b> argument are used to highlight a specific variant in the plotted graphs.
+
+The <b>pinpoint</b> argument is used to specify the identifier of a single variant that you want to highlight on the chart. You must provide this variant identifier as a string for the <b>pinpoint</b> argument. For example, "10:69083:T:C".
+
+On the other hand, the <b>pinpoint_color</b> argument is used to set the highlight color of the specified variant. You can provide the name of the color or the hexadecimal code of the color for the <b>pinpoint_color</b> argument. For example, “red” or “#FF0000”.
+
+When using these arguments, the script will generate a graphic where the variant specified by <b>pinpoint</b> will be highlighted with the color specified by <b>pinpoint_color</b>. This helps to draw attention to a specific variant of interest.
+
+Here is an example of how to use the argument:
+
+```
+python GWASproject.py --input_path 'your/input/path/' --output_path 'your/output/path' –build “19”  --pinpoint "10:69083:T:C" --pinpoint_color "red"
+```
+The Manhattan plot view for a <b>pinpoint</b> value "10:69083:T:C" and <b>pinpoint_color</b> "red" would be:
+
+![image9.png](../tutorial-images/image9.png)
+
 <h2>Annotation</h2>
 The <b>anno</b> argument is used to specify the annotation of variants on graphs plotted by <b>GWASProject</b>.
 
 The <b>anno</b> refers to the column of the data that contains the annotation information for each variant.
 
-This argument takes boolean, string or “GENENAME” values:
-
-Boolean:
-If the <b>anno</b> argument is set to <b>True</b>, the annotated variants will be automatically selected using a 500kb window and the chromosome:position format.
-Here is an example of how to use the argument:
-
-```
-python GWASproject.py --input_path 'your/input/path/' --output_path 'your/output/path' –build “19”  --anno “True”
-```
-
-The Manhattan plot view for a “True” year value would be:
+This argument takes string or “GENENAME” values:
 
 String:
 the name of a column used for annotation will be used
