@@ -250,7 +250,7 @@ python GWASproject.py --input_path 'your/input/path/' --output_path 'your/output
 
 The Manhattan plot view for an anno “rsID” value would be:
 
-![image10.png](..tutorial-images/image10.png)
+![image10.png](../tutorial-images/image10.png)
 
 GENENAME:
 This value is set to the default. Gene names are automatically annotated using <a href="https://github.com/openvax/pyensembl">pyensembl</a>.
