@@ -203,3 +203,22 @@ The Manhattan plot view for a sig_level value of 5e-8 would be:
 ![image1.png](../tutorial-images/image1.png)
 
 <i><b>It is important to say that this argument only accepts float values, and that the default value for this argument is 5e-8.</b></i>
+
+<h2>Highlight Argument</h2>
+The <b>highlight</b> argument is used to highlight specific variants in the graphs plotted by the script. It allows you to provide a list of variants you want to highlight.
+
+The <b>highlight_color</b> argument is used to set the highlight color for the variants specified in the <b>highlight</b> argument. You can provide a color in string format such as “red”, "#FF0000" (hex code) or "(1.0, 0.0, 0.0)" (RGB values).
+
+When the variants specified in <b>highlight</b> are plotted on the chart, they are visually highlighted with the color specified in <b>highlight_color</b>, making it easier to identify these variants.
+
+Here is an example of how to use the argument:
+
+```
+python GWASproject.py --input_path 'your/input/path/' --output_path 'your/output/path' –build “19” --highlight "10:69083:T:C" "10:94263:A:C" --highlight_color "#FF0000"
+```
+
+The Manhattan plot view for a value of <b>highligh</b> and <b>highlight_color</b> would be:
+
+![image8.png](../tutorial-images/image8.png)
+
+Make sure that the value chosen for the <b>highlight</b> argument is valid and is from the dataset being read.
