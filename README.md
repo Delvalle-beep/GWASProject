@@ -299,3 +299,31 @@ python GWASproject.py --input_path 'your/input/path/' --output_path 'your/output
 The Manhattan plot view for a <b>chr_filter</b> value equal to "CHR>=1 & CHR<7" would be:
 
 ![image11.png](../tutorial-images/image11.png)
+
+<h2>Variant Call Format - vcf file</h2>
+The <b>vcf_file</b> argument is used to specify a VCF (Variant Call Format) file that contains information about genetic variants. VCF is a widely used file format for storing genetic variant data such as genotypes and information about specific variants.
+
+By supplying the <b>vcf_file</b> argument in a given context, you are indicating that you want to include <b>LD (Linkage Disequilibrium)</b> information in the process of generating related graphs or analyses. The <b>LD</b> is a statistical measure that describes the association between two closely related genetic variants in a given dataset.
+
+The value provided for the <b>vcf_file</b> argument must be the path or location of the VCF file you want to use. 
+For example:
+
+```
+python GWASproject.py --input_path 'your/input/path/' --output_path 'your/output/path' –build “19”  --vcf_file 'your/reference/file/path/'
+```
+
+The previous argument allows you to use your own reference file, but GWASProject already has a default <b>vcf file</b> that can be set using the “True” value for the <b>vcf_file</b> argument.
+
+```
+python GWASproject.py --input_path 'your/input/path/' --output_path 'your/output/path' –build “19”  --vcf_file True
+```
+
+<b><i>These files are "1kg_eas_hg19" and "1kg_eas_hg38".</i></b>
+
+In this context, "1kg" represents the <a href="https://www.internationalgenome.org/">1000 Genomes Project</a>, which is an international initiative to sequence the genome of at least a thousand individuals from different populations around the world. "eas" is an abbreviation for East Asians, which refers to East Asian populations such as Chinese, Japanese, and Koreans.
+
+Therefore, "1kg_eas_hg19" and "1kg_eas_hg38" indicates that the genetic dataset refers to genetic variants found in individuals from East Asian populations, based on the hg19 and hg38 reference assembly of the human genome. This data may include information about genotypes, allele frequencies, and other genetic characteristics relevant to that specific population.
+
+To select the desired file, in addition to setting the value of <b>vcf_file</b> equal to “True”, also indicate the value of the <b>build</b> argument so that the system understands which reference assembly you would like to use.
+
+![Regional_Plot4233554.png.png](../tutorial-images/Regional_Plot4233554.png.png)
