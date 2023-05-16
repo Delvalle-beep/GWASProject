@@ -326,4 +326,6 @@ Therefore, "1kg_eas_hg19" and "1kg_eas_hg38" indicates that the genetic dataset 
 
 To select the desired file, in addition to setting the value of <b>vcf_file</b> equal to “True”, also indicate the value of the <b>build</b> argument so that the system understands which reference assembly you would like to use.
 
-![Regional_Plot4233554.png.png](../tutorial-images/Regional_Plot4233554.png.png)
+An example view for <b>vcf_file</b> “True” using the hg19 reference would be:
+
+![image14.png](../tutorial-images/image14.png)
