@@ -22,7 +22,7 @@ python GWASproject.py --input_path 'your/input/path/', 'your/input/path2/' ,'you
 ```
 The console output should start like this:
 
-![image.png](../tutorial-images/image.png)
+![image.png](tutorial-images/image.png)
 
 <ul>
 <li>Input files must be in "csv" or "tsv" format</li>
@@ -31,10 +31,10 @@ The console output should start like this:
 
 An example of the plots that can be generated with the script are:
 
-![image1.png](../tutorial-images/image1.png)
-![Regional1intro](../tutorial-images/Regional1intro.png)
-![Regional2intro](../tutorial-images/Regional2intro.png)
-![image3.png](../tutorial-images/image3.png)
+![image1.png](tutorial-images/image1.png)
+![Regional1intro](tutorial-images/Regional1intro.png)
+![Regional2intro](tutorial-images/Regional2intro.png)
+![image3.png](tutorial-images/image3.png)
 
 The script is an optimization of the <a href="https://cloufield.github.io/gwaslab/">"GWASLAB"</a> library.
 To get more personalized results some variables can be set, learn more in the next session.
@@ -63,7 +63,7 @@ It is important to note that GWAS studies require a large sample size of thousan
 Single nucleotide polymorphisms (SNPs) are genetic variants that occur at a determined frequency in a population. This is the main difference between SNPs and simple mutations. SNPs occur at expected and determined frequencies, while mutations occur at unexpected frequencies. Furthermore, it is important to highlight that SNPs occur with a certain regularity in our genome. It is estimated that there is one SNP per thousand nucleotides, considering that our genome has 3 billion nucleotides, the estimate is that there are 3 million SNPs (although this can vary according to the study). More than 100 million SNPs that have some clinical or biological significance have been reported in the literature. It is important to note that many of these SNPs do not affect our organism or biology, as they can occur in regions of our DNA that will not affect gene expression. However, others may affect genes, generate important problems, metabolic disorders, and may be risk factors for diseases.
 
 <h2>Study materials</h2>
-![gwastutorialPrint](../tutorial-images/gwastutorialPrint.png)
+![gwastutorialPrint](tutorial-images/gwastutorialPrint.png)
 If population genetics or genome-wide association studies are new to you, I recommend visiting this <a href="https://cloufield.github.io/GWASTutorial/">website</a> for more in-depth content.
 
 This tutorial is provided by the Kamaya Laboratory at the University of Tokyo. It is primarily intended for beginners in bioinformatics/statistical genetics. It covers the following parts:
@@ -78,7 +78,7 @@ This tutorial is provided by the Kamaya Laboratory at the University of Tokyo. I
 
 To delve even further into statistical and computational concepts, I strongly recommend accessing this <a href="https://gwaslab.org/">site</a>.
 
-![GWASLABorg](../tutorial-images/GWASLABorg.png)
+![GWASLABorg](tutorial-images/GWASLABorg.png)
 
 Despite being originally written in Traditional Chinese, the site is well written and easily translated by public translation tools. I consider this the most complete and most explanatory material for beginners in the area.
 
@@ -103,7 +103,7 @@ So that the script can read the columns of the loaded dataset, the column labels
 ['beta'],['p_value'],['snpid'],['variant_id'],['effect_allele'],['chromosome'],['other_allele'],
 ['standard_error'],['base_pair_location']          
 ```
-![image4.png](../tutorial-images/image4.png)
+![image4.png](tutorial-images/image4.png)
 
 These columns in turn are formatted within the script to the <a href="https://www.cog-genomics.org/plink/1.9/formats">PLINK</a> format.
 Using the <a href="https://www.cog-genomics.org/plink/1.9/formats">PLINK</a> format, these columns change their label to:
@@ -119,7 +119,7 @@ BETA=['beta']
 SE=['standard_error']
 SNPID=['snpid']
 ```     
-![image5.png](../tutorial-images/image5.png)
+![image5.png](tutorial-images/image5.png)
 
 <h2>File output</h2>
 To define a path where the files generated after processing will be saved, you must define the  <b>output_path</b>. 
@@ -168,7 +168,7 @@ python GWASproject.py --input_path 'your/input/path/' --output_path 'your/output
 ```
 The Manhattan plot view for a <b>skip</b> value of 2 would be:
 
-![image6.png](../tutorial-images/image6.png)
+![image6.png](tutorial-images/image6.png)
 
 <h2>Cut in plotted values</h2>
 The <b>cut</b> argument is used to define a cut value in plotting graphs of <b>p-values</b> or <b>-log10(p)</b> values. 
@@ -185,7 +185,7 @@ python GWASproject.py --input_path 'your/input/path/' --output_path 'your/output
 
 The Manhattan plot view for a cut value of 5 would be:
 
-![image7.png](../tutorial-images/image7.png)
+![image7.png](tutorial-images/image7.png)
 
 <h2>Significance level</h2>
 The <b>sig_level</b> argument is used to define the level of statistical significance for plotting the <b>p-values</b> or <b>-log10(p)</b> values of the plotted graphs.
@@ -203,7 +203,7 @@ For example, if you set <b>sig_level</b> to "5e-8", the graph will be plotted wi
 
 The Manhattan plot view for a sig_level value of 5e-8 would be:
 
-![image1.png](../tutorial-images/image1.png)
+![image1.png](tutorial-images/image1.png)
 
 <i><b>It is important to say that this argument only accepts float values, and that the default value for this argument is 5e-8.</b></i>
 
@@ -222,7 +222,7 @@ python GWASproject.py --input_path 'your/input/path/' --output_path 'your/output
 
 The Manhattan plot view for a value of <b>highligh</b> and <b>highlight_color</b> would be:
 
-![image8.png](../tutorial-images/image8.png)
+![image8.png](tutorial-images/image8.png)
 
 Make sure that the value chosen for the <b>highlight</b> argument is valid and is from the dataset being read.
 
@@ -242,7 +242,7 @@ python GWASproject.py --input_path 'your/input/path/' --output_path 'your/output
 ```
 The Manhattan plot view for a <b>pinpoint</b> value "10:69083:T:C" and <b>pinpoint_color</b> "red" would be:
 
-![image9.png](../tutorial-images/image9.png)
+![image9.png](tutorial-images/image9.png)
 
 <h2>Annotation</h2>
 The <b>anno</b> argument is used to specify the annotation of variants on graphs plotted by <b>GWASProject</b>.
@@ -261,7 +261,7 @@ python GWASproject.py --input_path 'your/input/path/' --output_path 'your/output
 
 The Manhattan plot view for an anno “rsID” value would be:
 
-![image10.png](../tutorial-images/image10.png)
+![image10.png](tutorial-images/image10.png)
 
 GENENAME:
 This value is set to the default. Gene names are automatically annotated using <a href="https://github.com/openvax/pyensembl">pyensembl</a>.
@@ -274,7 +274,7 @@ python GWASproject.py --input_path 'your/input/path/' --output_path 'your/output
 
 The Manhattan plot view for an <b>anno</b> value “GENENAME” would be:
 
-![image1.png](../tutorial-images/image1.png)
+![image1.png](tutorial-images/image1.png)
 
 <h2>Filter chromosomes</h2>
 The <b>chr_filter</b> argument is used to filter the variants based on the desired chromosomes during the generation of graphs plotted by <b>GWASProject</b>.
@@ -288,7 +288,7 @@ python GWASproject.py --input_path 'your/input/path/' --output_path 'your/output
 ```
 The Manhattan plot view for a <b>chr_filter</b> value equal to 1 would be:
 
-![image-1.png](../tutorial-images/image-1.png)
+![image-1.png](tutorial-images/image-1.png)
 
 or
 
@@ -298,7 +298,7 @@ python GWASproject.py --input_path 'your/input/path/' --output_path 'your/output
 
 The Manhattan plot view for a <b>chr_filter</b> value equal to "CHR>=1 & CHR<7" would be:
 
-![image11.png](../tutorial-images/image11.png)
+![image11.png](tutorial-images/image11.png)
 
 <h2>Variant Call Format - vcf file</h2>
 The <b>vcf_file</b> argument is used to specify a VCF (Variant Call Format) file that contains information about genetic variants. VCF is a widely used file format for storing genetic variant data such as genotypes and information about specific variants.
@@ -328,7 +328,7 @@ To select the desired file, in addition to setting the value of <b>vcf_file</b> 
 
 An example view for <b>vcf_file</b> “True” using the hg19 reference would be:
 
-![image14.png](../tutorial-images/image14.png)
+![image14.png](tutorial-images/image14.png)
 
 <h2>Suggestive sig level</h2>
 
@@ -345,4 +345,4 @@ Can be specified as a string like “red” or hexadecimal like “#FF0000”.
 python GWASproject.py --input_path 'your/input/path/' --output_path 'your/output/path' –build “19”  --suggestive_sig_level 5e-6 --suggestive_sig_line_color "pink"
 ```
 
-![image00.png](../tutorial-images/image00.png)
+![image00.png](tutorial-images/image00.png)
